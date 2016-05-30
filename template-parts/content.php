@@ -1,15 +1,9 @@
 <?php
 /**
- * Template part for displaying posts.
- *
- * @link https://codex.wordpress.org/Template_Hierarchy
- *
  * @package antonia
  */
-
 ?>
-
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article>
 	<header class="entry-header">
 		<?php
 			if ( is_single() ) {
@@ -17,7 +11,6 @@
 			} else {
 				the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 			}
-
 		if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
 			<?php antonia_posted_on(); ?>
@@ -25,7 +18,6 @@
 		<?php
 		endif; ?>
 	</header><!-- .entry-header -->
-
 	<div class="entry-content">
 		<?php
 			the_content( sprintf(
@@ -33,15 +25,13 @@
 				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'antonia' ), array( 'span' => array( 'class' => array() ) ) ),
 				the_title( '<span class="screen-reader-text">"', '"</span>', false )
 			) );
-
 			wp_link_pages( array(
 				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'antonia' ),
 				'after'  => '</div>',
 			) );
 		?>
 	</div><!-- .entry-content -->
-
 	<footer class="entry-footer">
 		<?php antonia_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
-</article><!-- #post-## -->
+</article>
