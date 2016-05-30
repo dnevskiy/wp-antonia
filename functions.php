@@ -3,6 +3,28 @@
  * @package antonia
  */
 
+/**
+* http://tgmpluginactivation.com
+*/
+require_once dirname( __FILE__ ) . '/class-tgm-plugin-activation.php'; 
+add_action( 'tgmpa_register', 'mytheme_require_plugins' ); 
+function mytheme_require_plugins() { 
+    $plugins = array(
+    	array(
+    	'name'               => 'iThemes Security',
+			'slug'               => 'better-wp-security',
+			'required'           => false,
+			),
+			array(
+				'name'               => 'Cyr to Lat enhanced',
+				'slug'               => 'cyr3lat',
+				'required'           => false,
+			)
+		);
+    $config = array(); 
+    tgmpa( $plugins, $config ); 
+}
+
 if ( ! function_exists( 'antonia_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.

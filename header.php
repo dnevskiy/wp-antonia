@@ -2,16 +2,18 @@
 /**
  * @package antonia
  */
-?><!DOCTYPE html>
-<html <?php language_attributes(); ?>>
-<head>
-<meta charset="<?php bloginfo( 'charset' ); ?>">
+?>
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js ie6 oldie" <?php language_attributes(); ?>><![endif]-->
+<!--[if IE 7]><html class="no-js ie7 oldie" <?php language_attributes(); ?>><![endif]-->
+<!--[if IE 8]><html class="no-js ie8 oldie" <?php language_attributes(); ?>><![endif]-->
+<!--[if gt IE 8]><!--><html xmlns='http://www.w3.org/1999/xhtml' xmlns:fb='http://ogp.me/ns/fb#' xmlns:og='http://ogp.me/ns#' <?php language_attributes(); ?>><!--<![endif]-->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="profile" href="http://gmpg.org/xfn/11">
-<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+<link rel="pingback" href="http://faberlic-line.com/xmlrpc.php" />
+<link rel="profile" href="http://gmpg.org/xfn/11" />
 <?php wp_head(); ?>
-</head>
-<body>
 <div class="site">
 	<header class="site-header" role="banner">
 		<div class="site-branding">
