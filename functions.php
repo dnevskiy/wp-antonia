@@ -19,6 +19,11 @@ function mytheme_require_plugins() {
 				'name'               => 'Cyr to Lat enhanced',
 				'slug'               => 'cyr3lat',
 				'required'           => false,
+			),
+			array(
+				'name'               => 'Google XML Sitemaps',
+				'slug'               => 'google-sitemap-generator',
+				'required'           => false,
 			)
 		);
     $config = array(); 

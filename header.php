@@ -13,6 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="pingback" href="http://faberlic-line.com/xmlrpc.php" />
 <link rel="profile" href="http://gmpg.org/xfn/11" />
+<!-- http://realfavicongenerator.net -->
 <?php wp_head(); ?>
 <div class="site">
 	<header class="site-header" role="banner">
