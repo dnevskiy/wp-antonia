@@ -1,4 +1,7 @@
 <?php
+/** http://alexvolkov.ru/how_to_hide_you_are_using_wordpress.html
+/** https://habrahabr.ru/post/264033/
+
 /**
  * @package antonia
  */
@@ -48,7 +51,7 @@ function antonia_setup() {
 	load_theme_textdomain( 'antonia', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
-	add_theme_support( 'automatic-feed-links' );
+	// add_theme_support( 'automatic-feed-links' );
 
 	/*
 	 * Let WordPress manage the document title.
@@ -94,11 +97,6 @@ function antonia_setup() {
 		'link',
 	) );
 
-	// Set up the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( 'antonia_custom_background_args', array(
-		'default-color' => 'ffffff',
-		'default-image' => '',
-	) ) );
 }
 endif;
 add_action( 'after_setup_theme', 'antonia_setup' );
@@ -137,39 +135,47 @@ add_action( 'widgets_init', 'antonia_widgets_init' );
  * Enqueue scripts and styles.
  */
 function antonia_scripts() {
-	wp_enqueue_style( 'antonia-style', get_stylesheet_uri() );
+	//wp_enqueue_style( 'antonia-style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'antonia-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
-
+// What is it?
 	wp_enqueue_script( 'antonia-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
 }
 add_action( 'wp_enqueue_scripts', 'antonia_scripts' );
 
 /**
  * Implement the Custom Header feature.
  */
-require get_template_directory() . '/inc/custom-header.php';
+// require get_template_directory() . '/inc/custom-header.php';
 
 /**
  * Custom template tags for this theme.
  */
-require get_template_directory() . '/inc/template-tags.php';
+ require get_template_directory() . '/inc/template-tags.php';
 
 /**
  * Custom functions that act independently of the theme templates.
  */
-require get_template_directory() . '/inc/extras.php';
+// require get_template_directory() . '/inc/extras.php';
 
 /**
  * Customizer additions.
  */
-require get_template_directory() . '/inc/customizer.php';
+// require get_template_directory() . '/inc/customizer.php';
 
 /**
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+/**
+	* All scripts move to footer
+	*/
+function footer_enqueue_scripts(){
+  remove_action('wp_head','wp_print_scripts');
+  remove_action('wp_head','wp_print_head_scripts',9);
+  remove_action('wp_head','wp_enqueue_scripts',1);
+  add_action('wp_footer','wp_print_scripts',5);
+  add_action('wp_footer','wp_enqueue_scripts',5);
+  add_action('wp_footer','wp_print_head_scripts',5);
+}
+add_action('after_setup_theme','footer_enqueue_scripts');
