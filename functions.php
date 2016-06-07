@@ -141,10 +141,18 @@ add_action( 'widgets_init', 'antonia_widgets_init' );
  */
 function antonia_scripts() {
 	//wp_enqueue_style( 'antonia-style', get_stylesheet_uri() );
-
 	wp_enqueue_script( 'antonia-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 // What is it?
 	wp_enqueue_script( 'antonia-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+ 	// снимаем стандартную регистрацию jQuery
+  wp_deregister_script('jquery');
+  wp_deregister_script('jquery-ui-mouse');
+  wp_deregister_script('jquery-ui-slider');
+  wp_deregister_script('jquery-ui-button');
+  // регистрируем для подключения в футере, описание параметров - в документации функции (ссылка чуть выше)
+  wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js', false, null, true); 
+ 	// подключаем
+  wp_enqueue_script('jquery');
 }
 add_action( 'wp_enqueue_scripts', 'antonia_scripts' );
 
